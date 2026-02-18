@@ -1,4 +1,5 @@
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { updateAdSelectors } from "@/app/selectors/siteSelectors";
 
 const s3 = new S3Client({
   region: process.env.AWS_REGION,
@@ -22,7 +23,7 @@ export async function POST(req) {
 
   try {
     const body = await req.json();
-    const { config = {} } = body;
+    let { config = {} } = body;
     const { siteDomain: domain = "" } = config;
 
     if (!config || !Object.keys(config).length || !domain) {
@@ -36,6 +37,7 @@ export async function POST(req) {
       );
     }
 
+    config = updateAdSelectors(config);
     const bucket = process.env.S3_BUCKET_NAME;
 
     // -------- 1) Upload Config JSON --------
@@ -56,17 +58,12 @@ export async function POST(req) {
     const wrapperResponse = await fetch(wrapperUrl);
 
     if (!wrapperResponse.ok) {
-      throw new Error(
-        `Failed to fetch ax.js script to generate ${domain} JS wrapper.`,
-      );
+      throw new Error(`Failed to fetch ax.js script to generate ${domain} JS wrapper.`);
     }
 
     let scriptContent = await wrapperResponse.text();
     // Inject site config
-    scriptContent = scriptContent.replace(
-      "__AX_SITE_CONFIG__",
-      JSON.stringify(config),
-    );
+    scriptContent = scriptContent.replace("__AX_SITE_CONFIG__", JSON.stringify(config));
 
     const scriptKey = `scripts/${domain}.js`;
 
