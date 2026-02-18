@@ -15,7 +15,7 @@ export async function POST(req) {
   console.log("process.env.DEPLOY_SECRET: ", process.env.DEPLOY_SECRET);
 
   if (secret !== process.env.DEPLOY_SECRET) {
-    return new Response(JSON.stringify({ error: "Unauthorized" }), {
+    return new Response(JSON.stringify({ error: "Unauthorized access" }), {
       status: 401,
     });
   }
@@ -25,9 +25,11 @@ export async function POST(req) {
     const { config = {} } = body;
     const { siteDomain: domain = "" } = config;
 
-    if (!domain || !config) {
+    if (!config || !Object.keys(config).length || !domain) {
       return new Response(
-        JSON.stringify({ error: "domain and config required" }),
+        JSON.stringify({
+          error: "Invalid site domain and config. Check the publisher config.",
+        }),
         {
           status: 400,
         },
@@ -50,14 +52,22 @@ export async function POST(req) {
     );
 
     // -------- 2) Generate Ad Script --------
-    const scriptContent = `
-(function() {
-  window.AD_ENGINE_CONFIG = ${JSON.stringify(config)};
-  var s = document.createElement('script');
-  s.src = "https://cdn.yourdomain.com/core/ad-engine.js";
-  s.async = true;
-  document.head.appendChild(s);
-})();`;
+    const wrapperUrl = process.env.WRAPPER_SCRIPT_URL;
+    const wrapperResponse = await fetch(wrapperUrl);
+
+    if (!wrapperResponse.ok) {
+      throw new Error(
+        `Failed to fetch ax.js script to generate ${domain} JS wrapper.`,
+      );
+    }
+
+    let scriptContent = await wrapperResponse.text();
+    // Inject site config
+    scriptContent = scriptContent.replace(
+      "__AX_SITE_CONFIG__",
+      JSON.stringify(config),
+    );
+
     const scriptKey = `scripts/${domain}.js`;
 
     await s3.send(
@@ -83,7 +93,9 @@ export async function POST(req) {
   } catch (err) {
     console.error(err);
     return new Response(
-      JSON.stringify({ error: "CloudFront CDN deployment failed" }),
+      JSON.stringify({
+        error: "CloudFront deployment failed. Please check the server logs.",
+      }),
       {
         status: 500,
       },
