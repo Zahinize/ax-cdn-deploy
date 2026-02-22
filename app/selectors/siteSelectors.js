@@ -136,6 +136,14 @@ const siteConfig = {
             },
           },
         ],
+        customCSS: [
+          {
+            selector: ".wrapper-boxed.header-style-header-3 > .penci-header-wrap",
+            css: {
+              "margin-bottom": "60px",
+            },
+          },
+        ],
       },
       INCONTENT: {
         selectors: {
@@ -176,6 +184,9 @@ function updateAdSelectors(inputConfig) {
   if (!isValidSite) return inputConfig;
 
   inputConfig.siteAds.MANUAL.selectorArr = structuredClone(site.ads.MANUAL.selectorArr);
+  if (site.ads.MANUAL.customCSS) {
+    inputConfig.siteAds.MANUAL.customCSS = structuredClone(site.ads.MANUAL.customCSS);
+  }
   inputConfig.siteAds.INCONTENT.selectors = structuredClone(site.ads.INCONTENT.selectors);
   inputConfig.siteAds.ATF_SIDEBAR.selector = structuredClone(site.ads.ATF_SIDEBAR.selector);
 
