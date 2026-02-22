@@ -140,11 +140,16 @@ const siteConfig = {
       INCONTENT: {
         selectors: {
           root: ".post-entry > .entry-content",
-          content: [".entry-content p", ".wrapper-penci-recipe"],
+          content: [
+            ".entry-content > .hustle-ui.hustle-inline",
+            ".entry-content p",
+            ".entry-content > .wp-block-image",
+            ".wrapper-penci-recipe",
+          ],
         },
       },
       ATF_SIDEBAR: {
-        selector: "aside.sidebar",
+        selector: "#sidebar > .theiaStickySidebar",
       },
     },
   },
