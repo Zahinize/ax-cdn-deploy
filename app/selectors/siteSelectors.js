@@ -1,5 +1,5 @@
 const siteConfig = {
-  1: {
+  "bakewithshivesh.com": {
     siteDomain: "bakewithshivesh.com",
     ads: {
       MANUAL: {
@@ -90,7 +90,7 @@ const siteConfig = {
       },
     },
   },
-  2: {
+  "madhurasrecipe.com": {
     siteDomain: "madhurasrecipe.com",
     ads: {
       MANUAL: {
@@ -161,6 +161,59 @@ const siteConfig = {
       },
     },
   },
+  "mughlaikitchen.lovable.app": {
+    siteDomain: "mughlaikitchen.lovable.app",
+    ads: {
+      MANUAL: {
+        selectorArr: [
+          {
+            urls: ["^https?://mughlaikitchen.lovable.app(?:/.*)?$"],
+            platform: {
+              desktop: {
+                selectors: ["main > section:first-child", "main > section:nth-of-type(2)"],
+                sizes: [
+                  [728, 90],
+                  [970, 90],
+                ],
+              },
+              mobile: {
+                selectors: ["main > section:first-child", "main > section:nth-of-type(2)"],
+                sizes: [
+                  [336, 280],
+                  [300, 250],
+                  [250, 250],
+                  [320, 100],
+                  [468, 60],
+                  [320, 50],
+                  [300, 50],
+                ],
+              },
+              tablet: {
+                selectors: ["main > section:first-child", "main > section:nth-of-type(2)"],
+                sizes: [
+                  [728, 90],
+                  [970, 90],
+                ],
+              },
+            },
+          },
+        ],
+      },
+      INCONTENT: {
+        selectors: {
+          root: ".grid.grid-cols-1 > div:first-child",
+          content: [
+            ".grid.grid-cols-1 > div:first-child > div:nth-child(2)",
+            ".grid.grid-cols-1 > div:first-child > #section-1",
+            ".grid.grid-cols-1 > div:first-child > #section-2",
+          ],
+        },
+      },
+      ATF_SIDEBAR: {
+        selector: ".container > .grid > aside",
+      },
+    },
+  },
 };
 
 function updateAdSelectors(inputConfig) {
@@ -169,8 +222,8 @@ function updateAdSelectors(inputConfig) {
   }
 
   // inputConfig is the site config which comes in the POST API request
-  const { siteId = 1, siteDomain = "" } = inputConfig;
-  const site = siteConfig[siteId];
+  const { siteDomain = "" } = inputConfig;
+  const site = siteConfig[siteDomain];
   const isValidSite =
     site &&
     site.siteDomain === siteDomain &&
