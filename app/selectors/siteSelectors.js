@@ -76,7 +76,6 @@ const siteConfig = {
         selectors: {
           root: ".entry > .entry-content > .swp_social_panel.swp_horizontal_panel:first-child",
           content: [
-            ".entry > .entry-content p:nth-of-type(2)",
             ".entry > .entry-content p:nth-of-type(4)",
             ".entry > .entry-content p:nth-of-type(7)",
             ".entry > .entry-content p:nth-of-type(10)",
@@ -87,6 +86,13 @@ const siteConfig = {
       },
       ATF_SIDEBAR: {
         selector: "aside.sidebar",
+      },
+      MID_SCROLL: {
+        selectors: {
+          content: [
+            ".entry > .entry-content > .swp_social_panel.swp_horizontal_panel:first-child ~ p:nth-of-type(2)",
+          ],
+        },
       },
     },
   },
@@ -150,7 +156,6 @@ const siteConfig = {
           root: ".post-entry > .entry-content",
           content: [
             ".entry-content > .hustle-ui.hustle-inline",
-            ".entry-content p",
             ".entry-content > .wp-block-image",
             ".wrapper-penci-recipe",
           ],
@@ -158,6 +163,11 @@ const siteConfig = {
       },
       ATF_SIDEBAR: {
         selector: "#sidebar > .theiaStickySidebar",
+      },
+      MID_SCROLL: {
+        selectors: {
+          content: [".entry-content p"],
+        },
       },
     },
   },
@@ -203,7 +213,6 @@ const siteConfig = {
         selectors: {
           root: ".grid.grid-cols-1 > div:first-child",
           content: [
-            ".grid.grid-cols-1 > div:first-child > div:nth-child(2)",
             ".grid.grid-cols-1 > div:first-child > #section-1",
             ".grid.grid-cols-1 > div:first-child > #section-2",
           ],
@@ -211,6 +220,11 @@ const siteConfig = {
       },
       ATF_SIDEBAR: {
         selector: ".container > .grid > aside",
+      },
+      MID_SCROLL: {
+        selectors: {
+          content: [".grid.grid-cols-1 > div:first-child > div:nth-child(2)"],
+        },
       },
     },
   },
@@ -232,7 +246,9 @@ function updateAdSelectors(inputConfig) {
     site.ads.INCONTENT &&
     Object.keys(site.ads.INCONTENT.selectors).length &&
     site.ads.ATF_SIDEBAR &&
-    site.ads.ATF_SIDEBAR.selector;
+    site.ads.ATF_SIDEBAR.selector &&
+    site.ads.MID_SCROLL &&
+    Object.keys(site.ads.MID_SCROLL.selectors).length;
 
   if (!isValidSite) return inputConfig;
 
@@ -242,6 +258,7 @@ function updateAdSelectors(inputConfig) {
   }
   inputConfig.siteAds.INCONTENT.selectors = structuredClone(site.ads.INCONTENT.selectors);
   inputConfig.siteAds.ATF_SIDEBAR.selector = structuredClone(site.ads.ATF_SIDEBAR.selector);
+  inputConfig.siteAds.MID_SCROLL.selectors = structuredClone(site.ads.MID_SCROLL.selectors);
 
   return inputConfig;
 }
