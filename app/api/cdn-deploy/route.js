@@ -24,12 +24,13 @@ export async function POST(req) {
   try {
     const body = await req.json();
     let { config = {} } = body;
-    const { siteDomain: domain = "" } = config;
+    const { siteDomain: domain = "", uniqueId = "" } = config;
 
-    if (!config || !Object.keys(config).length || !domain) {
+    if (!config || !Object.keys(config).length || !domain || !uniqueId) {
       return new Response(
         JSON.stringify({
-          error: "Invalid site domain and config. Check the publisher config.",
+          error:
+            "Invalid site domain, uniqueId or config. Check the publisher configuration and try again.",
         }),
         {
           status: 400,
@@ -41,7 +42,7 @@ export async function POST(req) {
     const bucket = process.env.S3_BUCKET_NAME;
 
     // -------- 1) Upload Config JSON --------
-    const configKey = `configs/${domain}.json`;
+    const configKey = `configs/${uniqueId}.json`;
 
     await s3.send(
       new PutObjectCommand({
@@ -65,7 +66,7 @@ export async function POST(req) {
     // Inject site config
     scriptContent = scriptContent.replace("__AX_SITE_CONFIG__", JSON.stringify(config));
 
-    const scriptKey = `scripts/${domain}.js`;
+    const scriptKey = `scripts/${uniqueId}.js`;
 
     await s3.send(
       new PutObjectCommand({
@@ -80,8 +81,8 @@ export async function POST(req) {
     return new Response(
       JSON.stringify({
         success: true,
-        configUrl: `/configs/${domain}.json`,
-        scriptUrl: `/scripts/${domain}.js`,
+        configUrl: `/configs/${uniqueId}.json`,
+        scriptUrl: `/scripts/${uniqueId}.js`,
       }),
       {
         status: 200,
