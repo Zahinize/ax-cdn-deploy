@@ -228,6 +228,118 @@ const siteConfig = {
       },
     },
   },
+  "zeenews.india.com": {
+    siteDomain: "zeenews.india.com",
+    ads: {
+      MANUAL: {
+        selectorArr: [
+          {
+            urls: ["^https?://zeenews.india.com(?:/.*)?$"],
+            platform: {
+              desktop: {
+                selectors: [
+                  // Site Header
+                  "#sticky_header_main",
+                  // Latest News Section
+                  ".container.catergory-section-container .col-md-9 > .row.no-gutters",
+                  // Photo Gallery
+                  ".container.catergory-section-container .col-md-9 > .category-photos",
+                  // Category Thumbnail
+                  ".container.catergory-section-container .col-md-9 > .category-thumbnail",
+                  // More News Section
+                  ".container.catergory-section-container .col-md-9 > .more-news-section > .row.morenews-block:nth-of-type(3)",
+                  // MainContent News (T20 World Cup 2026 News)
+                  ".container.catergory-section-container .col-12.col-md-9.maincontent > .news_item:nth-of-type(3)",
+                  ".container.catergory-section-container .col-12.col-md-9.maincontent > .news_item:nth-of-type(6)",
+                  ".container.catergory-section-container .col-12.col-md-9.maincontent > .news_item:nth-of-type(10)",
+                  ".container.catergory-section-container .col-12.col-md-9.maincontent > .news_item:nth-of-type(14)",
+                  ".container.catergory-section-container .col-12.col-md-9.maincontent > .news_item:nth-of-type(19)",
+                ],
+                sizes: [
+                  [728, 90],
+                  [970, 90],
+                ],
+              },
+              mobile: {
+                selectors: [
+                  // Site Header
+                  "#sticky_header_main",
+                  // Latest News Section
+                  ".container.catergory-section-container .col-md-9 > .row.no-gutters",
+                  // Photo Gallery
+                  ".container.catergory-section-container .col-md-9 > .category-photos",
+                  // Category Thumbnail
+                  ".container.catergory-section-container .col-md-9 > .category-thumbnail",
+                  // More News Section
+                  ".container.catergory-section-container .col-md-9 > .more-news-section > .row.morenews-block:nth-of-type(3)",
+                  // MainContent News (T20 World Cup 2026 News)
+                  ".container.catergory-section-container .col-12.col-md-9.maincontent > .news_item:nth-of-type(3)",
+                  ".container.catergory-section-container .col-12.col-md-9.maincontent > .news_item:nth-of-type(6)",
+                  ".container.catergory-section-container .col-12.col-md-9.maincontent > .news_item:nth-of-type(10)",
+                  ".container.catergory-section-container .col-12.col-md-9.maincontent > .news_item:nth-of-type(14)",
+                  ".container.catergory-section-container .col-12.col-md-9.maincontent > .news_item:nth-of-type(19)",
+                ],
+                sizes: [
+                  [336, 280],
+                  [300, 250],
+                  [250, 250],
+                  [320, 100],
+                  [468, 60],
+                  [320, 50],
+                  [300, 50],
+                ],
+              },
+              tablet: {
+                selectors: [
+                  // Site Header
+                  "#sticky_header_main",
+                  // Latest News Section
+                  ".container.catergory-section-container .col-md-9 > .row.no-gutters",
+                  // Photo Gallery
+                  ".container.catergory-section-container .col-md-9 > .category-photos",
+                  // Category Thumbnail
+                  ".container.catergory-section-container .col-md-9 > .category-thumbnail",
+                  // More News Section
+                  ".container.catergory-section-container .col-md-9 > .more-news-section > .row.morenews-block:nth-of-type(3)",
+                  // MainContent News (T20 World Cup 2026 News)
+                  ".container.catergory-section-container .col-12.col-md-9.maincontent > .news_item:nth-of-type(3)",
+                  ".container.catergory-section-container .col-12.col-md-9.maincontent > .news_item:nth-of-type(6)",
+                  ".container.catergory-section-container .col-12.col-md-9.maincontent > .news_item:nth-of-type(10)",
+                  ".container.catergory-section-container .col-12.col-md-9.maincontent > .news_item:nth-of-type(14)",
+                  ".container.catergory-section-container .col-12.col-md-9.maincontent > .news_item:nth-of-type(19)",
+                ],
+                sizes: [
+                  [336, 280],
+                  [300, 250],
+                  [250, 250],
+                  [320, 100],
+                  [468, 60],
+                  [320, 50],
+                  [300, 50],
+                ],
+              },
+            },
+          },
+        ],
+      },
+      INCONTENT: {
+        selectors: {
+          root: ".container > .row > .col-md-9 > .article_content",
+          content: [
+            ".container > .row > .col-md-9 > #Readmore_height .article_content.article_description p",
+          ],
+        },
+      },
+      ATF_SIDEBAR: {
+        selector: ".container > .row > .col-md-3",
+      },
+      MID_SCROLL: {
+        selectors: {
+          content: [".container > .row > .col-md-9 > .article_content + .article_content"],
+        },
+      },
+    },
+  },
 };
 
 function updateAdSelectors(inputConfig) {
