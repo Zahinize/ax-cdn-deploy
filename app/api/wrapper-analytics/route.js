@@ -14,7 +14,14 @@ export async function POST(req) {
 
   try {
     const body = await req.json();
-    let { siteId = "", siteDomain = "", queryType = "", dateType = "" } = body;
+    let {
+      siteId = "",
+      siteDomain = "",
+      queryType = "",
+      dateType = "",
+      startDate = "",
+      endDate = "",
+    } = body;
 
     if (!siteId || !siteDomain || !queryType || !dateType) {
       return new Response(
@@ -32,10 +39,14 @@ export async function POST(req) {
     dateType = dateType.toUpperCase();
 
     const isGlobal = siteId === "ALL" && siteDomain === "ALL";
+    // Construct the site clause and date range for the query
     const siteClause = isGlobal
       ? ""
       : `ae.site_id = ${siteId} and ae.site_domain = '${siteDomain}' and `;
-    const dateRange = queryDateTypes[dateType];
+    const dateRange =
+      dateType === "CUSTOM_DATE"
+        ? queryDateTypes[dateType](startDate, endDate)
+        : queryDateTypes[dateType];
     const query = analyticsQueries[queryType](siteClause, dateRange);
 
     /************* POSTHOG QUERY *************/

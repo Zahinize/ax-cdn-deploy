@@ -36,6 +36,8 @@ const queryDateTypes = {
   LAST_90_DAYS: "timestamp > now() - INTERVAL 90 DAY AND timestamp <= now()",
   MONTH_TO_DATE: "timestamp >= toStartOfMonth(now()) AND timestamp <= now()",
   YEAR_TO_DATE: "timestamp >= toStartOfYear(now()) AND timestamp <= now()",
+  CUSTOM_DATE: (startDate, endDate) =>
+    `timestamp >= toDateTime('${startDate} 00:00:00') AND timestamp <= toDateTime('${endDate} 23:59:59')`,
 };
 
 export { analyticsQueries, queryDateTypes };
