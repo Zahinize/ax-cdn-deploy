@@ -9,22 +9,22 @@ const analyticsQueries = {
     `select event, count() as event_count from all_events as ae where ${siteClause}${dateType} and event like '%_loaded%' and event != 'gpt_loaded' group by event order by event_count desc;`,
 
   TOP_URLS: (siteClause, dateType) =>
-    `select ae.page_url, count() as event_count from all_events as ae where ${siteClause}${dateType} group by ae.page_url order by event_count desc limit 10;`,
+    `select ae.page_url, count() as event_count from all_events as ae where ${siteClause}${dateType} and event = 'pageview' group by ae.page_url order by event_count desc limit 10;`,
 
   TOP_PLATFORMS: (siteClause, dateType) =>
-    `select ae.platform, count() as event_count from all_events as ae where ${siteClause}${dateType} group by ae.platform order by event_count desc;`,
+    `select ae.platform, count() as event_count from all_events as ae where ${siteClause}${dateType} and event = 'pageview' group by ae.platform order by event_count desc;`,
 
   TOP_BROWSERS: (siteClause, dateType) =>
-    `select ae.browser, count() as event_count from all_events as ae where ${siteClause}${dateType} group by ae.browser order by event_count desc;`,
+    `select ae.browser, count() as event_count from all_events as ae where ${siteClause}${dateType} and event = 'pageview' group by ae.browser order by event_count desc;`,
 
   TOP_DEVICES: (siteClause, dateType) =>
-    `select ae.device, count() as event_count from all_events as ae where ${siteClause}${dateType} group by ae.device order by event_count desc;`,
+    `select ae.device, count() as event_count from all_events as ae where ${siteClause}${dateType} and event = 'pageview' group by ae.device order by event_count desc;`,
 
   TOP_CITIES: (siteClause, dateType) =>
-    `select ae.city, count() as event_count from all_events as ae where ${siteClause}${dateType} group by ae.city order by event_count desc;`,
+    `select ae.city, count() as event_count from all_events as ae where ${siteClause}${dateType} and event = 'pageview' group by ae.city order by event_count desc;`,
 
   TOP_COUNTRIES: (siteClause, dateType) =>
-    `select ae.country, count() as event_count from all_events as ae where ${siteClause}${dateType} group by ae.country order by event_count desc;`,
+    `select ae.country, count() as event_count from all_events as ae where ${siteClause}${dateType} and event = 'pageview' group by ae.country order by event_count desc;`,
 };
 
 const queryDateTypes = {
