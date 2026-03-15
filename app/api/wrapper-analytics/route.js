@@ -31,8 +31,12 @@ export async function POST(req) {
     queryType = queryType.toUpperCase();
     dateType = dateType.toUpperCase();
 
+    const isGlobal = siteId === "ALL" && siteDomain === "ALL";
+    const siteClause = isGlobal
+      ? ""
+      : `ae.site_id = ${siteId} and ae.site_domain = '${siteDomain}' and `;
     const dateRange = queryDateTypes[dateType];
-    const query = analyticsQueries[queryType](siteId, siteDomain, dateRange);
+    const query = analyticsQueries[queryType](siteClause, dateRange);
 
     /************* POSTHOG QUERY *************/
     const posthogResponse = await fetch(
