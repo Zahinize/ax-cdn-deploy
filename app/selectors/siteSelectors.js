@@ -340,6 +340,31 @@ const siteConfig = {
       },
     },
   },
+  "udn.com": {
+    siteDomain: "udn.com",
+    ads: {
+      MID_SCROLL: {
+        selectors: {
+          content: [
+            ".container > .wrapper-left > .article-content__wrapper .article-content__editor p:nth-of-type(8)",
+          ],
+        },
+      },
+    },
+  },
+  "nownews.com": {
+    siteDomain: "nownews.com",
+    ads: {
+      MID_SCROLL: {
+        selectors: {
+          content: [
+            ".mainBlk .listBlk .list-wrap li:nth-child(2)",
+            ".mainBlk #articleContent > font:nth-of-type(2)",
+          ],
+        },
+      },
+    },
+  },
 };
 
 function updateAdSelectors(inputConfig) {
