@@ -388,6 +388,46 @@ const siteConfig = {
       },
     },
   },
+  "indianexpress.com": {
+    siteDomain: "indianexpress.com",
+    ads: {
+      MID_SCROLL: {
+        selectors: {
+          content: ["#pcl-full-content p:nth-of-type(1)"],
+        },
+      },
+    },
+  },
+  "financialexpress.com": {
+    siteDomain: "financialexpress.com",
+    ads: {
+      MID_SCROLL: {
+        selectors: {
+          content: ["#pcl-full-content p:nth-of-type(2)"],
+        },
+      },
+    },
+  },
+  "thehindubusinessline.com": {
+    siteDomain: "thehindubusinessline.com",
+    ads: {
+      MID_SCROLL: {
+        selectors: {
+          content: [".article-main #ControlPara p:nth-of-type(2)"],
+        },
+      },
+    },
+  },
+  "india.com": {
+    siteDomain: "india.com",
+    ads: {
+      MID_SCROLL: {
+        selectors: {
+          content: [".article-details h2 + p"],
+        },
+      },
+    },
+  },
 };
 
 function updateAdSelectors(inputConfig) {
