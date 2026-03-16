@@ -365,6 +365,29 @@ const siteConfig = {
       },
     },
   },
+  "moneycontrol.com": {
+    siteDomain: "moneycontrol.com",
+    ads: {
+      MID_SCROLL: {
+        selectors: {
+          content: [
+            ".page_wrapper .page_left_wrapper .content_wrapper p:nth-of-type(3)",
+            "#left #cagetory > #newslist-5",
+          ],
+        },
+      },
+    },
+  },
+  "thehindu.com": {
+    siteDomain: "thehindu.com",
+    ads: {
+      MID_SCROLL: {
+        selectors: {
+          content: [".container.article-section .storyline .schemaDiv p:nth-of-type(2)"],
+        },
+      },
+    },
+  },
 };
 
 function updateAdSelectors(inputConfig) {
