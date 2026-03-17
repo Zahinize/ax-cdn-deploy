@@ -343,6 +343,20 @@ const siteConfig = {
   "udn.com": {
     siteDomain: "udn.com",
     ads: {
+      MANUAL: {
+        selectorArr: [{}],
+      },
+      INCONTENT: {
+        selectors: {
+          root: ".container > .wrapper-left > .article-content__wrapper",
+          content: [
+            ".container > .wrapper-left > .article-content__wrapper .article-content__editor p:nth-of-type(12)",
+          ],
+        },
+      },
+      ATF_SIDEBAR: {
+        selector: ".container > .wrapper-right",
+      },
       MID_SCROLL: {
         selectors: {
           content: [
@@ -355,6 +369,18 @@ const siteConfig = {
   "nownews.com": {
     siteDomain: "nownews.com",
     ads: {
+      MANUAL: {
+        selectorArr: [{}],
+      },
+      INCONTENT: {
+        selectors: {
+          root: ".mainBlk #articleContent",
+          content: [".mainBlk #articleContent > font:nth-of-type(5)"],
+        },
+      },
+      ATF_SIDEBAR: {
+        selector: ".container > .wrapper-right",
+      },
       MID_SCROLL: {
         selectors: {
           content: [
