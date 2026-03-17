@@ -350,7 +350,7 @@ const siteConfig = {
         selectors: {
           root: ".container > .wrapper-left > .article-content__wrapper",
           content: [
-            ".container > .wrapper-left > .article-content__wrapper .article-content__editor p:nth-of-type(12)",
+            ".container > .wrapper-left > .article-content__wrapper .article-content__editor p:nth-of-type(9)",
           ],
         },
       },
@@ -360,7 +360,7 @@ const siteConfig = {
       MID_SCROLL: {
         selectors: {
           content: [
-            ".container > .wrapper-left > .article-content__wrapper .article-content__editor p:nth-of-type(8)",
+            ".container > .wrapper-left > .article-content__wrapper .article-content__editor p:nth-of-type(7)",
           ],
         },
       },
