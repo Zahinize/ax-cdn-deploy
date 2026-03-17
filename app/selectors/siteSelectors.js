@@ -394,6 +394,18 @@ const siteConfig = {
   "moneycontrol.com": {
     siteDomain: "moneycontrol.com",
     ads: {
+      MANUAL: {
+        selectorArr: [{}],
+      },
+      INCONTENT: {
+        selectors: {
+          root: ".page_wrapper .page_left_wrapper .content_wrapper",
+          content: [".page_wrapper .page_left_wrapper .content_wrapper p:nth-of-type(7)"],
+        },
+      },
+      ATF_SIDEBAR: {
+        selector: ".container > .wrapper-right",
+      },
       MID_SCROLL: {
         selectors: {
           content: [
@@ -407,6 +419,18 @@ const siteConfig = {
   "thehindu.com": {
     siteDomain: "thehindu.com",
     ads: {
+      MANUAL: {
+        selectorArr: [{}],
+      },
+      INCONTENT: {
+        selectors: {
+          root: ".container.article-section .storyline",
+          content: [".container.article-section .storyline .schemaDiv p:nth-of-type(6)"],
+        },
+      },
+      ATF_SIDEBAR: {
+        selector: ".container > .wrapper-right",
+      },
       MID_SCROLL: {
         selectors: {
           content: [".container.article-section .storyline .schemaDiv p:nth-of-type(2)"],
@@ -417,6 +441,18 @@ const siteConfig = {
   "indianexpress.com": {
     siteDomain: "indianexpress.com",
     ads: {
+      MANUAL: {
+        selectorArr: [{}],
+      },
+      INCONTENT: {
+        selectors: {
+          root: "#pcl-full-content",
+          content: ["#pcl-full-content p:nth-of-type(5)"],
+        },
+      },
+      ATF_SIDEBAR: {
+        selector: ".container > .wrapper-right",
+      },
       MID_SCROLL: {
         selectors: {
           content: ["#pcl-full-content p:nth-of-type(1)"],
@@ -427,6 +463,18 @@ const siteConfig = {
   "financialexpress.com": {
     siteDomain: "financialexpress.com",
     ads: {
+      MANUAL: {
+        selectorArr: [{}],
+      },
+      INCONTENT: {
+        selectors: {
+          root: "#pcl-full-content",
+          content: ["#pcl-full-content p:nth-of-type(6)"],
+        },
+      },
+      ATF_SIDEBAR: {
+        selector: ".container > .wrapper-right",
+      },
       MID_SCROLL: {
         selectors: {
           content: ["#pcl-full-content p:nth-of-type(2)"],
@@ -437,6 +485,18 @@ const siteConfig = {
   "thehindubusinessline.com": {
     siteDomain: "thehindubusinessline.com",
     ads: {
+      MANUAL: {
+        selectorArr: [{}],
+      },
+      INCONTENT: {
+        selectors: {
+          root: ".article-main #ControlPara",
+          content: [".article-main #ControlPara p:nth-of-type(6)"],
+        },
+      },
+      ATF_SIDEBAR: {
+        selector: ".container > .wrapper-right",
+      },
       MID_SCROLL: {
         selectors: {
           content: [".article-main #ControlPara p:nth-of-type(2)"],
@@ -447,6 +507,18 @@ const siteConfig = {
   "india.com": {
     siteDomain: "india.com",
     ads: {
+      MANUAL: {
+        selectorArr: [{}],
+      },
+      INCONTENT: {
+        selectors: {
+          root: ".article-details",
+          content: [".article-details p:nth-of-type(6)"],
+        },
+      },
+      ATF_SIDEBAR: {
+        selector: ".container > .wrapper-right",
+      },
       MID_SCROLL: {
         selectors: {
           content: [".article-details h2 + p"],
