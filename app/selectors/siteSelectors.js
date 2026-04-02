@@ -526,6 +526,31 @@ const siteConfig = {
       },
     },
   },
+  "news.nextapple.com": {
+    siteDomain: "news.nextapple.com",
+    ads: {
+      MANUAL: {
+        selectorArr: [{}],
+      },
+      INCONTENT: {
+        selectors: {
+          root: "#main-content .infScroll",
+          content: [
+            "#main-content .infScroll > .post-content > p:nth-of-type(2)",
+            "#main-content .infScroll > .post-content > p:nth-of-type(4)",
+          ],
+        },
+      },
+      ATF_SIDEBAR: {
+        selector: "aside#side-bar",
+      },
+      MID_SCROLL: {
+        selectors: {
+          content: ["#main-content .infScroll > header"],
+        },
+      },
+    },
+  },
 };
 
 function updateAdSelectors(inputConfig) {
