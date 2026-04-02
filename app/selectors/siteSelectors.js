@@ -526,8 +526,8 @@ const siteConfig = {
       },
     },
   },
-  "news.nextapple.com": {
-    siteDomain: "news.nextapple.com",
+  "nextapple.com": {
+    siteDomain: "nextapple.com",
     ads: {
       MANUAL: {
         selectorArr: [{}],
