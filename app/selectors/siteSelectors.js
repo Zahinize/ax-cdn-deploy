@@ -551,6 +551,37 @@ const siteConfig = {
       },
     },
   },
+  "weekendhk.com": {
+    siteDomain: "weekendhk.com",
+    ads: {
+      MANUAL: {
+        selectorArr: [{}],
+      },
+      INCONTENT: {
+        selectors: {
+          root: ".post-article.js-post-gallery",
+          content: [
+            // Category grid masonry items
+            ".grid.masonry > .masonry__item:nth-of-type(1)",
+            ".grid.masonry > .masonry__item:nth-of-type(4)",
+            ".grid.masonry > .masonry__item:nth-of-type(6)",
+            ".grid.masonry > .masonry__item:nth-of-type(9)",
+            ".post-article.js-post-gallery > ._content_ > ._page_._page_3",
+            ".post-article.js-post-gallery > ._content_ > ._page_._page_5",
+            ".post-article.js-post-gallery > ._content_ > ._page_._page_7",
+          ],
+        },
+      },
+      ATF_SIDEBAR: {
+        selector: ".grid__item.sidebar",
+      },
+      MID_SCROLL: {
+        selectors: {
+          content: [".post-article.js-post-gallery > ._content_ > ._page_._page_1"],
+        },
+      },
+    },
+  },
 };
 
 function updateAdSelectors(inputConfig) {
