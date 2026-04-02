@@ -379,7 +379,7 @@ const siteConfig = {
         },
       },
       ATF_SIDEBAR: {
-        selector: ".container > .wrapper-right",
+        selector: "aside.rightCol",
       },
       MID_SCROLL: {
         selectors: {
