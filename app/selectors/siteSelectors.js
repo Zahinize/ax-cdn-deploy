@@ -551,8 +551,8 @@ const siteConfig = {
       },
     },
   },
-  "weekendhk.com": {
-    siteDomain: "weekendhk.com",
+  "www.weekendhk.com": {
+    siteDomain: "www.weekendhk.com",
     ads: {
       MANUAL: {
         selectorArr: [{}],
