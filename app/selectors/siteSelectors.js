@@ -613,6 +613,37 @@ const siteConfig = {
       },
     },
   },
+  "hk01.com": {
+    siteDomain: "hk01.com",
+    ads: {
+      MANUAL: {
+        selectorArr: [{}],
+      },
+      INCONTENT: {
+        selectors: {
+          root: ".article-grid--article-top > .article-grid__content-section",
+          content: [
+            ".article-grid--article-top > .article-grid__content-section #article-content-section p:nth-of-type(3)",
+            ".article-grid--article-top > .article-grid__content-section #article-content-section p:nth-of-type(5)",
+            ".article-grid--article-top > .article-grid__content-section #article-content-section p:nth-of-type(8)",
+            ".article-grid--article-top > .article-grid__content-section #article-content-section p:nth-of-type(11)",
+            ".article-grid--article-top > .article-grid__content-section #article-content-section p:nth-of-type(14)",
+            ".article-grid--article-top > .article-grid__content-section #article-content-section p:nth-of-type(17)",
+          ],
+        },
+      },
+      ATF_SIDEBAR: {
+        selector: ".article-grid--article-top > .article-grid__desktop-rhs-section > div > div",
+      },
+      MID_SCROLL: {
+        selectors: {
+          content: [
+            ".article-grid--article-top > .article-grid__content-section #article-content-section p:nth-of-type(1)",
+          ],
+        },
+      },
+    },
+  },
 };
 
 function updateAdSelectors(inputConfig) {
