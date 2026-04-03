@@ -65,7 +65,6 @@ export async function POST(req) {
     let scriptContent = await wrapperResponse.text();
     // Inject site config
     scriptContent = scriptContent.replace("__AX_SITE_CONFIG__", JSON.stringify(config));
-
     const scriptKey = `scripts/${uniqueId}.js`;
 
     await s3.send(
@@ -78,11 +77,37 @@ export async function POST(req) {
       }),
     );
 
+    // -------- 3) Generate Ad 1X1 tag --------
+    const onexonetagUrl = process.env.WRAPPER_1X1_TAG_URL;
+    const tagResponse = await fetch(onexonetagUrl);
+
+    if (!tagResponse.ok) {
+      throw new Error(`Failed to fetch 1x1.js script to generate ${domain} 1x1 tag.`);
+    }
+
+    const generatedWrapperUrl = `${process.env.WRAPPER_BASE_URL}${uniqueId}.js`;
+    let tagContent = await tagResponse.text();
+    // Inject site wrapper URL
+    tagContent = tagContent.replace(/__AX_WRAPPER_URL__/g, generatedWrapperUrl);
+
+    const tagKey = `scripts/${uniqueId}_1x1.js`;
+
+    await s3.send(
+      new PutObjectCommand({
+        Bucket: bucket,
+        Key: tagKey,
+        Body: tagContent,
+        ContentType: "application/javascript",
+        CacheControl: "public, max-age=60",
+      }),
+    );
+
     return new Response(
       JSON.stringify({
         success: true,
-        configUrl: `/configs/${uniqueId}.json`,
-        scriptUrl: `/scripts/${uniqueId}.js`,
+        configUrl: configKey,
+        scriptUrl: scriptKey,
+        tagUrl: tagKey,
       }),
       {
         status: 200,
