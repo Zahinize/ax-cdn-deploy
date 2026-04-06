@@ -350,12 +350,15 @@ const siteConfig = {
         selectors: {
           root: ".container > .wrapper-left > .article-content__wrapper",
           content: [
+            ".container > .wrapper-left > .article-content__wrapper .article-content__editor p:nth-of-type(1)",
             ".container > .wrapper-left > .article-content__wrapper .article-content__editor p:nth-of-type(9)",
+            ".container > .wrapper-left > .article-content__wrapper .article-content__editor p:nth-of-type(12)",
+            ".container > .wrapper-left > .article-content__wrapper .article-content__editor .article-content__image",
           ],
         },
       },
       ATF_SIDEBAR: {
-        selector: ".container > .wrapper-right",
+        selector: ".wrapper-aside > .wrapper-aside__container",
       },
       MID_SCROLL: {
         selectors: {
