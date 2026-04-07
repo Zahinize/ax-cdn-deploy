@@ -662,8 +662,6 @@ const siteConfig = {
             ".article-page .row > .article-main-col > .article-main #ControlPara p:nth-of-type(9)",
             ".article-page .row > .article-main-col > .article-main #ControlPara div.article-picture",
             ".article-page .row > .article-main-col > .article-main #ControlPara div.article-picture + div.article-picture + div.article-picture",
-            ".article-page .row > .article-main-col > .article-main #ControlPara div.article-picture + div.article-picture + div.article-picture + div.article-picture",
-            ".article-page .row > .article-main-col > .article-main #ControlPara p:nth-of-type(13)",
           ],
         },
       },
