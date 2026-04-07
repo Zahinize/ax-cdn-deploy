@@ -647,6 +647,38 @@ const siteConfig = {
       },
     },
   },
+  "thehindu.co.in": {
+    siteDomain: "thehindu.co.in",
+    ads: {
+      MANUAL: {
+        selectorArr: [{}],
+      },
+      INCONTENT: {
+        selectors: {
+          root: ".article-page .row > .article-main-col > .article-main",
+          content: [
+            ".article-page .row > .article-main-col > .article-main #ControlPara p:nth-of-type(3)",
+            ".article-page .row > .article-main-col > .article-main #ControlPara p:nth-of-type(5)",
+            ".article-page .row > .article-main-col > .article-main #ControlPara div.article-picture",
+            ".article-page .row > .article-main-col > .article-main #ControlPara div.article-picture + div.article-picture + div.article-picture",
+            ".article-page .row > .article-main-col > .article-main #ControlPara div.article-picture + div.article-picture + div.article-picture + div.article-picture",
+            ".article-page .row > .article-main-col > .article-main #ControlPara p:nth-of-type(7)",
+            ".article-page .row > .article-main-col > .article-main #ControlPara p:nth-of-type(10)",
+          ],
+        },
+      },
+      ATF_SIDEBAR: {
+        selector: ".article-page .row > .right-ad",
+      },
+      MID_SCROLL: {
+        selectors: {
+          content: [
+            ".article-page .row > .article-main-col > .article-main #ControlPara p:nth-of-type(1)",
+          ],
+        },
+      },
+    },
+  },
 };
 
 function updateAdSelectors(inputConfig) {
