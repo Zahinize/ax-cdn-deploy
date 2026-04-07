@@ -657,13 +657,12 @@ const siteConfig = {
         selectors: {
           root: ".article-page .row > .article-main-col > .article-main",
           content: [
-            ".article-page .row > .article-main-col > .article-main #ControlPara p:nth-of-type(2)",
-            ".article-page .row > .article-main-col > .article-main #ControlPara p:nth-of-type(4)",
-            ".article-page .row > .article-main-col > .article-main #ControlPara p:nth-of-type(6)",
+            ".article-page .row > .article-main-col > .article-main #ControlPara p:nth-of-type(3)",
+            ".article-page .row > .article-main-col > .article-main #ControlPara p:nth-of-type(5)",
+            ".article-page .row > .article-main-col > .article-main #ControlPara p:nth-of-type(8)",
             ".article-page .row > .article-main-col > .article-main #ControlPara div.article-picture",
             ".article-page .row > .article-main-col > .article-main #ControlPara div.article-picture + div.article-picture + div.article-picture",
             ".article-page .row > .article-main-col > .article-main #ControlPara div.article-picture + div.article-picture + div.article-picture + div.article-picture",
-            ".article-page .row > .article-main-col > .article-main #ControlPara p:nth-of-type(8)",
             ".article-page .row > .article-main-col > .article-main #ControlPara p:nth-of-type(10)",
           ],
         },
